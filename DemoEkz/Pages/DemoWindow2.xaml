@@ -1,0 +1,154 @@
+﻿<Window x:Class="DemoEkz.Pages.DemoWindow2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoEkz.Pages"
+        mc:Ignorable="d"
+        Title="DemoWindow2" Height="760" Width="980">
+
+    <Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Padding" Value="10 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="PasswordBox">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Padding" Value="10 0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="20">
+        <Border CornerRadius="30" Background="White">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="30" Opacity="0.18"/>
+            </Border.Effect>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <!--Title-->
+                        <RowDefinition Height="*"/>
+                        <!--Base-->
+                        <RowDefinition Height="auto"/>
+                        <!--buttons-->
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0">
+                        <!-- Title-->
+                        <TextBlock Text="Авторизация" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold"/>
+                        <TextBlock Text="Введите логин и параоль, затем решите капчу" Foreground="Gray" HorizontalAlignment="Center" FontSize="15" FontWeight="SemiBold"/>
+                    </StackPanel>
+
+                    <Grid Grid.Row="1" Margin="20">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="0" CornerRadius="30" Background="WhiteSmoke" Padding="10">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="30" Opacity=".26"/>
+                            </Border.Effect>
+                            <StackPanel Margin="30" VerticalAlignment="Center">
+                                <TextBlock Text="Данные для входа" FontSize="30" HorizontalAlignment="Center" FontWeight="Bold" Margin="0 0 0 20"/>
+                                <TextBlock Text="Логин" FontSize="20" FontWeight="SemiBold" Margin="20 0 0 20"/>
+                                <TextBox x:Name="loginTextBox" />
+                                <TextBlock Text="Пароль" FontSize="20" FontWeight="SemiBold" Margin="20 0 0 20"/>
+                                <PasswordBox x:Name="passwordBox"/>
+                                <TextBlock Text="Поля логин и пароль обязательны для заполнения" FontSize="15" FontWeight="SemiBold" Margin="0 150 0 0" HorizontalAlignment="Center" Foreground="Gray"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Column="2" CornerRadius="30" Background="WhiteSmoke" Padding="10 60 10 10" >
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="30" Opacity=".26"/>
+                            </Border.Effect>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+
+                                <StackPanel Grid.Row="0" Margin="0 0 0 20">
+                                    <TextBlock FontWeight="Bold" FontSize="30" Text="Интерактивная капча" HorizontalAlignment="Center"/>
+                                    <TextBlock FontWeight="SemiBold" FontSize="15" Text="Выберите фрагмент и разместите его в слоте" HorizontalAlignment="Center" TextWrapping="Wrap" Foreground="Gray"/>
+                                </StackPanel>
+
+                                <Grid Grid.Row="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="10"/>
+                                        <ColumnDefinition Width="1*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="Ячейки" TextAlignment="Center" FontSize="15" FontWeight="SemiBold" Margin="0 0 0 20"/>
+                                        <Viewbox MaxHeight="320" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <UniformGrid Rows="2" Columns="2" Width="200" Height="200">
+                                                <Border x:Name="slot1" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Slot_Click">
+                                                    <Grid>
+                                                        <TextBlock Text="1" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="gray"/>
+                                                        <Image x:Name="slotImage1" Stretch="Fill"/>
+                                                    </Grid>
+                                                </Border>
+                                                <Border x:Name="slot2" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Slot_Click">
+                                                    <Grid>
+                                                        <TextBlock Text="2" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="gray"/>
+                                                        <Image x:Name="slotImage2" Stretch="Fill"/>
+                                                    </Grid>
+                                                </Border>
+                                                <Border x:Name="slot3" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Slot_Click">
+                                                    <Grid>
+                                                        <TextBlock Text="3" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="gray"/>
+                                                        <Image x:Name="slotImage3" Stretch="Fill"/>
+                                                    </Grid>
+                                                </Border>
+                                                <Border x:Name="slot4" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Slot_Click">
+                                                    <Grid>
+                                                        <TextBlock Text="4" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="15" Foreground="gray"/>
+                                                        <Image x:Name="slotImage4" Stretch="Fill"/>
+                                                    </Grid>
+                                                </Border>
+                                            </UniformGrid>
+                                        </Viewbox>
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2">
+                                        <TextBlock Text="Фрагменты" TextAlignment="Center" FontSize="15" FontWeight="SemiBold" Margin="0 0 0 20"/>
+                                        <Viewbox MaxHeight="320" Stretch="Uniform" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <UniformGrid Rows="2" Columns="2" Width="200" Height="200">
+                                                <Border x:Name="part1" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Part_Click">
+                                                    <Image x:Name="partImage1" Stretch="Fill"/>
+                                                </Border>
+                                                <Border x:Name="part2" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Part_Click">
+                                                    <Image x:Name="partImage2" Stretch="Fill"/>
+                                                </Border>
+                                                <Border x:Name="part3" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Part_Click">
+                                                    <Image x:Name="partImage3" Stretch="Fill"/>
+                                                </Border>
+                                                <Border x:Name="part4" BorderThickness="1" BorderBrush="LightGray" Background="Transparent" MouseLeftButtonDown="Part_Click">
+                                                    <Image x:Name="partImage4" Stretch="Fill"/>
+                                                </Border>
+                                            </UniformGrid>
+                                        </Viewbox>
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 26">
+                        <Button Content="Перемешать капчу" Height="30" Width="190" FontSize="15" Margin="0 0 100 0"/>
+                        <Button Content="Войти" Height="30" Width="190" Background="BlueViolet" FontSize="15" Foreground="White" Click="AuthButton_Click"/>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+    </Grid>
+
+</Window>
